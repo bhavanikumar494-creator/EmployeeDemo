@@ -1,0 +1,53 @@
+﻿@model List<EmployeeDemo.Models.Product>
+
+<div class="container mt-5">
+
+    <h2>Products</h2>
+
+    <a asp-controller="Admin"
+       asp-action="Create"
+       class="btn btn-primary mb-3">
+        Add Product
+    </a>
+
+    <table class="table table-bordered">
+
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Created At</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @* Replace the raw foreach with a null/empty guard *@
+            @if (Model == null || !Model.Any())
+            {
+                <tr>
+                    <td colspan="5" class="text-center">No products found.</td>
+                </tr>
+            }
+            else
+            {
+                foreach (var product in Model)
+                {
+                    <tr>
+                        <td>
+                            <!-- image cell -->
+                        </td>
+                        <td>@product.Name</td>
+                        <td>@product.Description</td>
+                        <td>@product.Price</td>
+                        <td>@product.CreatedAt</td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
