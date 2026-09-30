@@ -1,4 +1,4 @@
-﻿@model List<EmployeeDemo.Models.Product>
+﻿@model List<Product>
 
 <div class="container mt-5">
 
@@ -19,6 +19,7 @@
                 <th>Description</th>
                 <th>Price</th>
                 <th>Created At</th>
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -37,11 +38,15 @@
                     <tr>
                         <td>
                             <!-- image cell -->
+                            <img src="@product.ImagePath" width="200px" height="50px" />
                         </td>
                         <td>@product.Name</td>
                         <td>@product.Description</td>
-                        <td>@product.Price</td>
+                        <td>@product.Price.ToString("F2")</td>
                         <td>@product.CreatedAt</td>
+                        <td> <a asp-action="Edit" asp-route-id="@product.Id" class="btn btn-warning">Edit</a>
+                            <a  asp-action="Delete" asp-route-id="@product.Id" class="btn btn-danger">Delete</a> </td>
+
                     </tr>
                 }
             }
